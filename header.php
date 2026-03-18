@@ -2,7 +2,7 @@
 
 <header>
     <div class="header_container">
-        <img src="images/logo-big-v4.png" alt="logo1">
+        <img src="../images/logo-big-v4.png" alt="logo1">
         <nav>
 
             <a class="home_link" href="<?php echo $base_url; ?>/index.php">Home</a> 
