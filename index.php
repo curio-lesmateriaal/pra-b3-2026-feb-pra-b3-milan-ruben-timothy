@@ -2,15 +2,16 @@
 <html lang="nl">
 
 <head>
-    <title></title>
+    <title>Homepage | Pretpark Webapp</title>
     <?php require_once 'head.php'; ?>
 </head>
 
 <body>
-    
-    <div class="container">
-
-
+    <?php require_once 'header.php'; ?>
+    <div class="wrapper">
+        <div class="h1_homepage">
+            <h1>Welkom bij de Pretpark Webapp</h1>
+        </div>
     </div>
 
 </body>
