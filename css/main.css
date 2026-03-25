@@ -1,3 +1,9 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
 /*! HTML5 Boilerplate v8.0.0 | MIT License | https://html5boilerplate.com/ */
 
 /* main.css 2.1.0 | MIT License | https://github.com/h5bp/main.css#readme */
@@ -16,6 +22,7 @@ html {
   font-size: 1em;
   line-height: 1.4;
 }
+
 
 /*
  * Remove text-shadow in selection highlight:
@@ -288,3 +295,62 @@ label{
   }
 }
 
+.header_container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav{
+  display: flex;
+  gap: 10px;
+}
+
+nav a {
+  width: 140px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: #000000;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: 0.25s ease;
+}
+
+nav a:hover {
+    background: #f3f3f3;
+}
+
+/* Active/pagina highlight */
+nav a.active {
+    background: black;
+    color: white;
+}
+
+body{
+  background-image: url(../images/home.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  padding:20px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.wrapper{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 250px;
+}
+
+.header_container img{
+  width: 17%;
+}
+
+.h1_homepage{
+  color: rgb(255, 255, 255);
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
+}
