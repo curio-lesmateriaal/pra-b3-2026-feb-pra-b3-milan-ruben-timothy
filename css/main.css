@@ -354,3 +354,20 @@ body{
   color: rgb(255, 255, 255);
   text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
 }
+
+table{
+  display: flex;
+  justify-content: center;
+}
+
+th {
+  background-color: #363636;
+  color: white;
+  padding: 5px 15px 5px 15px;
+}
+
+td{
+  background-color: #4f547096;
+  color: white;
+  padding: 5px 15px 5px 15px;
+}
