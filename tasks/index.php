@@ -17,50 +17,84 @@
     <?php 
         require_once  __DIR__ . '/../backend/conn.php';
 
-        $query = "SELECT * FROM taken ";
+        $query = "SELECT * FROM taken";
 
         $statement = $conn->prepare($query);
         $statement->execute();
-        $taken = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-        $deadlines = array_column($taken, 'deadline');
-
-        array_multisort($deadlines, SORT_ASC, $taken);
+        $items = $statement->fetchAll(PDO::FETCH_ASSOC);
         ?> 
 
-            <div class="takenoverzicht-links">
-                <a class="takenoverzicht-link" href="create.php">> Klik hier om een taak aan te maken</a>
-                <a class="takenoverzicht-link" href="done.php">> Klik hier om de Done page te bezoeken</a>
-                <a class="takenoverzicht-link" href="unfinished.php">> Klik hier om de unfinished tasks te zien</a>
+
+    <div class="kanban_container">
+        <div class="todo_container">
+            <h2>To-Do</h2>
+            <div class="todo_tasks">
+                <?php
+
+                require_once '../backend/conn.php';
+
+                $query = "SELECT * FROM taken";
+
+                $statement = $conn->prepare($query);
+                $statement->execute();
+
+                $items = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+                ?>
+                <?php foreach ($items as $item): ?>
+                    <?php if ($item['status'] == "todo"): ?>
+                        <div class="todo_main">
+                            <p><span>Titel:</span> <?= ($item['titel']); ?></p>
+                            <p><span>Afdeling:</span> <?= ($item['afdeling']); ?></p>
+                            <p><span>Beschrijving:</span> <?= ($item['beschrijving']); ?></p>
+                            <p><span>Deadline:</span> <?= ($item['deadline']); ?></p>
+                            <a href="edit.php?id=<?= $item['id']; ?>">Bekijk inhoud of pas aan</a>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+
             </div>
-    <table>
-            <tr>
+        </div>
+        <div class="doing_container">
+            <h2>Doing</h2>
+            <div class="doing_tasks">
+               <?php foreach ($items as $item): ?>
+                    <?php if ($item['status'] == "doing"): ?>
+                        <div class="todo_main">
+                            <p><span>Titel:</span> <?= ($item['titel']); ?></p>
+                            <p><span>Afdeling:</span> <?= ($item['afdeling']); ?></p>
+                            <p><span>Beschrijving:</span> <?= ($item['beschrijving']); ?></p>
+                            <p><span>Deadline:</span> <?= ($item['deadline']); ?></p>
+                            <a href="edit.php?id=<?= $item['id']; ?>">Bekijk inhoud of pas aan</a>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <div class="done_container">
+            <h2>Done</h2>
+            <div class="done_tasks">
+                <div class="done_main">
+                    <?php foreach ($items as $item): ?>
+                        <?php if ($item['status'] == "done"): ?>
+                            <div class="todo_main">
+                                <p><span>Titel:</span> <?= ($item['titel']); ?></p>
+                                <p><span>Afdeling:</span> <?= ($item['afdeling']); ?></p>
+                                <p><span>Beschrijving:</span> <?= ($item['beschrijving']); ?></p>
+                                <p><span>Deadline:</span> <?= ($item['deadline']); ?></p>
+                                <a href="edit.php?id=<?= $item['id']; ?>">Bekijk inhoud of pas aan</a>
+                            </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                <th>Titel</th>
-                <th>Description</th>
-                <th>Department</th>
-                <th>Status</th>
-                <th>deadline</th>
-
-            </tr>
-            <?php foreach($taken as $taak):   ?>
-            <tr>
-
-            <td> <?php echo $taak['titel']; ?></td>
-            <td> <?php echo $taak['beschrijving']; ?></td>
-            <td> <?php echo $taak['afdeling']; ?></td>
-            <td> <?php echo $taak['status']; ?></td>
-            <td> <?php echo $taak['deadline']; ?></td>  
-            <td><form action="../backend/taskControllers.php" method="POST">
-            <input type="hidden" name="id" value="<?php echo $taak['id']; ?>">
-
-            </form>
-            </td>
-
-           
-            </tr>
-            <?php endforeach; ?>
-        </table>
+    <div class="new-task">
+        <p><a href="create.php" class="btn btn-primary">➕ Nieuwe taak maken</a></p>
+    </div>
 </body>
 
 </html>
