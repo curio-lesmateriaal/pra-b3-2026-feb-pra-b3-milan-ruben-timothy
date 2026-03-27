@@ -97,4 +97,7 @@
     </div>
 </body>
 
+<footer>
+        <p>&copy; Hannes, Milan, Ruben en Timothy 2026</p>
+</footer>
 </html>
