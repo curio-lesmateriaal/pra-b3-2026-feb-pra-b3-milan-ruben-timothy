@@ -497,11 +497,8 @@ body{
 }
 
 .overview_h1 {
-  display: flex;
-  justify-content: center;
-  color: whitesmoke;
-  font-family: "Roboto", sans-serif;
-  padding-top: 7%;
+  color: rgb(255, 255, 255);
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
 }
 
 
@@ -769,3 +766,4 @@ footer{
     color: rgb(255, 255, 255);
     text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
 }
+

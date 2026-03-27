@@ -26,6 +26,12 @@
         ?> 
 
 
+    <div class="overview_done_wrapper">
+        <div class="overview_done_link1">
+            <a href="overview.php">>Klik hier voor de overzicht van de taken die To-Do & Doing zijn</a>
+        </div>
+    </div>
+
     <div class="kanban_container">
         <div class="todo_container">
             <h2>To-Do</h2>
